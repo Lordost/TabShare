@@ -15,7 +15,7 @@ import java.net.UnknownHostException;
 
 public class MainActivity extends AppCompatActivity {
 Button _Button;
-EditText _EditText, _EditText2;
+EditText _EditText2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,17 +25,15 @@ EditText _EditText, _EditText2;
         StrictMode.setThreadPolicy(policy);
         
         _Button = (Button)this.findViewById(R.id.button);
-        _EditText = (EditText)this.findViewById(R.id.editText);
         _EditText2 = (EditText)this.findViewById(R.id.editText2);
         
         _Button.setOnClickListener(new Button.OnClickListener(){
             @Override
             public void onClick(View v) {
             String ip;
-                ip = _EditText.getText().toString();
                 String url = _EditText2.getText().toString();
                 try {
-                    SendInformationToServer(ip, 6000, url);
+                    SendInformationToServer("192.168.0.23", 6000, url);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
