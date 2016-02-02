@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
 Button _Button;
 Button _Button2;
 EditText _EditText2;
-ArrayList <InetAddress> _Servers = new ArrayList<InetAddress>();
+static InetAddress _Servers;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,7 +37,8 @@ ArrayList <InetAddress> _Servers = new ArrayList<InetAddress>();
             @Override
             public void onClick(View v) {
                 try {
-                    client.FindServers(_Servers ,6000);
+                    client.FindServers(6000);
+                    System.out.println(client.server);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -53,7 +54,7 @@ ArrayList <InetAddress> _Servers = new ArrayList<InetAddress>();
                 String url = _EditText2.getText().toString();
 
                 try {
-                    client.SendInformationToServer(_Servers, 0, 6000, url);
+                    client.SendInformationToServer(6000, url);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
